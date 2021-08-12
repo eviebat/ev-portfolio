@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block page_content %}
+
+<div class="container-fluid bg-1 text-center rounded col-lg-12">
+        
+    <h3>Welcome! Bienviendos! Bem-vinda! </h3>
+    <h4>I built this blog using Django, styled with Bootstrap.
+        Check out my blog posts for a window into me - from tips on Django, musings on Computer Science
+        topics or updates on my pets! </h4>
+    </div>
+    <div id="about" class="rounded container-fluid bg-2 text-center">
+        <h3>About Me</h3>
+        <p><i class="fa fa-graduation-cap"></i> Current Computer Science Graduate student at Georgia Tech</p>
+        <p><i class="fa fa-heart"></i> Lover of Python, Linux, and Rasberry Pis</p>
+        <p><i class="fa fa-tree"></i> Backpacker, Hiker, Mycologist</p>
+        <div class="text-center">
+        <img class="rounded-circle img-responsive" style="display:inline"  src="{% static "img/pic2.jpeg" %}" alt="Evie image"/>
+        </div>
+        <br>
+        <a href="#" class="btn btn-default btn-lg"><span class="fa fa-heart"></span> GitHub</a>
+      </div>
+<div class="bg-3 rounded text-center col-lg-12" id="proj"><h1>Projects</h1> 
+
+<div class="row">
+{% for project in projects %}
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <img class="card-img-top" src="{% static project.image %}">
+            <div class="bg-3 card-body">
+                <h5 class="card-title">{{ project.title }}</h5>
+                <p class="card-text">{{ project.description }}</p>
+                <a href="{% url 'project_detail' project.pk %}"
+                   class="btn btn-dark">
+                    Read More
+                </a>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</div>
+</div>
+{% endblock %}
